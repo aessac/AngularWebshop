@@ -1,5 +1,7 @@
+import { IProductCategory } from './../../interfaces/IProductCategory';
+import { CategoryService } from './../../services/categories/category.service';
 import { ICategory } from './../../interfaces/ICategory';
-import { ProductService } from './../../services/product.service';
+import { ProductService } from './../../services/products/product.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IMovie } from '../../interfaces/IMovie';
 
@@ -13,7 +15,7 @@ import { faComment } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-  
+
 export class ProductsComponent implements OnInit {
   //Fontawesome
   cartIcon = faShoppingCart;
@@ -29,7 +31,7 @@ export class ProductsComponent implements OnInit {
   categoryList: ICategory[] = [];
   categoryById: ICategory[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private CategoryService: CategoryService) { }
 
   ngOnInit(): void {
     let category: ICategory[] = [];
@@ -41,8 +43,8 @@ export class ProductsComponent implements OnInit {
     });
 
     //Call getCategoryData function from productService
-    this.productService.getCategoryData().subscribe((cate: ICategory[]) => {
-      category = cate.filter((obj) => {
+    this.CategoryService.getCategoryData().subscribe((cate: ICategory[]) => {
+      category = cate.filter((obj: ICategory) => {
         return obj.name != null;
       });
       this.categoryList = category;
@@ -54,16 +56,16 @@ export class ProductsComponent implements OnInit {
     let catId: number = 0;
     let filtredMov: IMovie[] = [];
 
-    this.productService.getCategoryData().subscribe((cateId: ICategory[]) => {
-      this.categoryById = cateId.filter((obj) => {
+    this.CategoryService.getCategoryData().subscribe((cateId: ICategory[]) => {
+      this.categoryById = cateId.filter((obj: ICategory) => {
         return obj.id === id;
       });
-      this.categoryById.forEach((i) => {
+      this.categoryById.forEach((i: ICategory) => {
         catId = i.id;
       });
       this.productService.getMovieData().subscribe((movie: IMovie[]) => {
-        movie.forEach(mov => {
-          mov.productCategory.forEach(movCat => {
+        movie.forEach((mov: IMovie) => {
+          mov.productCategory.forEach((movCat: IProductCategory) => {
             if (movCat.categoryId === catId) {
               filtredMov.push(mov);
             }
