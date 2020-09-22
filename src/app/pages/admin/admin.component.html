@@ -1,1 +1,19 @@
-<p>admin works!</p>
+<div class="admin-block">
+  <div class="Admin-block-parent">
+    <div class="Admin-block-title">
+      <p>Company 777 - Orders Made By Users:</p>
+    </div>
+    <div class="Admin-block-child" *ngFor="let o of defaultOrders">
+      <p class="order-id"> ID: {{o.id}}</p>
+      <p class="order-createdOn">Created on: {{o.created}}</p>
+      <p class="order-createdBy">Created by: {{o.createdBy}}</p>
+      <p class="order-payment">Payment Method: {{o.paymentMethod}}</p>
+      <p class="order-price">Total Price: {{o.totalPrice}} Kr</p>
+      <p class="order-status">Status: {{o.status}}</p>
+
+      <button type="button" class="btn btn-danger admin-deleteOrder" (click)="deleteOrder(o.id)">DELETE
+        ORDER {{o.id}}!</button>
+      <p class="admin-warning"> Once the order is removed, it can't be restored.</p>
+    </div>
+  </div>
+</div>

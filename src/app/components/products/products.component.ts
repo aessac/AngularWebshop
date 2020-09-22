@@ -104,6 +104,7 @@ export class ProductsComponent implements OnInit {
     this.productService.getMovieData().subscribe((movie: IMovie[]) => {
       this.movieList = movie;
     });
+    
     this.InputClear.nativeElement.value = '';
   }
 }
