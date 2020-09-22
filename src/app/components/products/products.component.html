@@ -1,0 +1,42 @@
+<!-- Search bar -->
+<div class="searchBar-parent">
+  <div class="searchBar-child">
+    <input type="text" class="searchBar" placeholder="Search a movie..." #userSearchInput
+      (keyup)="searchProduct(userSearchInput.value)" />
+
+    <button type="button" class="btn btn-warning searchBar-clear" (click)="clearSearch()">Clear</button>
+  </div>
+</div>
+
+<!-- Categories -->
+<div class="category-parent">
+  <div class="category-child">
+    <button type="button" class="btn btn-info resetCategory-btn" (click)="categoryFilterReset()"> Show all</button>
+  </div>
+
+
+  <div class="category-child" *ngFor="let category of categoryList">
+    <button type="button" class="btn btn-info category-btn"
+      (click)="categoryFilter(category.id)">{{category.name}}</button>
+  </div>
+</div>
+
+<!-- Product presentation -->
+<div class='parent'>
+  <div *ngFor="let movie of movieList" class="child">
+    <p class="movieTitle">
+      <fa-icon [icon]="movieIcon"></fa-icon> {{movie.name}}
+    </p>
+    <p class="moviePrice">Price: {{movie.price}} <fa-icon [icon]="moneyIcon"></fa-icon>
+    </p>
+    <img [src]="movie.imageUrl" alt="poster" class="movieImage" />
+    <p class="movieDescription">
+      <fa-icon [icon]="descIcon"></fa-icon> Movie Discription:
+    </p>
+    <p class="movieDesc">{{movie.description}}</p>
+
+    <button type="button" class='btn btn-warning addToCart-btn'>
+      <fa-icon [icon]="cartIcon"></fa-icon> Add To Cart
+    </button>
+  </div>
+</div>

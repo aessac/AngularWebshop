@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { faFilm } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faCogs } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'webshop';
+
+  //FontAwesome icons
+  filmIcon = faFilm;
+  cartIcon = faShoppingCart;
+  cogsIcon = faCogs;
 }

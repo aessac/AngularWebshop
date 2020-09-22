@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.AppList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-bottom: 7px solid rgb(255, 1, 91);
+  background-color: rgb(55, 0, 60);
+  padding: 10px;
+}
+
+li {
+  float: left;
+  background-color: rgb(1, 254, 135);
+  margin: 2px;
+}
+
+.adminLink {
+  float: right;
+  background-color: rgb(235, 255, 0);
+  margin: 2px;
+}
+
+.cartLink {
+  float: right;
+  background-color: rgb(5, 241, 255);
+  margin: 2px;
+}
+
+li a {
+  display: block;
+  color: rgb(46, 4, 56);
+  text-align: center;
+  padding: 12px 14px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+li a:hover:not(.active) {
+  background-color: rgba(0, 0, 0, 0.062);
+}
+
+.active {
+  background-color: rgba(0, 0, 0, 0.062);
+}
