@@ -12,6 +12,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ShowcartComponent } from './pages/showcart/showcart.component';
 import { ProductsComponent } from './components/products/products.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProductsComponent } from './components/products/products.component';
     HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
