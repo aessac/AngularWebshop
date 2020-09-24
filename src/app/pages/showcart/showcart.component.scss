@@ -1,0 +1,77 @@
+.ShowCartBlock {
+  background-color: #37003c;
+  min-height: 100vh;
+}
+
+.ShowCartBlock-child {
+  background-color: teal;
+  padding-top: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  display: flex;
+}
+
+.ShowCartBlock-info {
+  padding-top: 15px;
+  padding-right: 40px;
+  padding-bottom: 20px;
+  margin-left: 13px;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+.cartremove-btn {
+  width: 100px;
+  margin: 5px;
+  padding: 3px;
+  border-radius: 25px;
+  outline: none;
+  font-weight: bold;
+  border: solid 5px crimson;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.ShowCartBlock-total {
+  background-color: rgb(32, 32, 32);
+  border-top: 5px solid rgb(219, 219, 219);
+  border-bottom: 5px solid rgb(219, 219, 219);
+}
+
+.availablePayment {
+  margin-top: 30px;
+  margin-left: 13px;
+  font-size: 18px;
+}
+
+.span-totalprice {
+  color: greenyellow;
+}
+
+.span-price {
+  color: gold;
+}
+
+.details {
+  margin-left: 13px;
+  font-size: 18px;
+  color: darkorange;
+}
+
+.cart-totalprice {
+  padding-top: 15px;
+  margin-left: 13px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.btn-success {
+  margin: 5px;
+}
+
+.cart-paymentMethod{
+  color: rgb(255, 217, 0);
+  font-weight: bold;
+  margin-left: 13px;
+}

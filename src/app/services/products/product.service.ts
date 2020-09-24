@@ -1,4 +1,3 @@
-import { ICategory } from '../../interfaces/ICategory';
 import { IMovie } from '../../interfaces/IMovie';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';

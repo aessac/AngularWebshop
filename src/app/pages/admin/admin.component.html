@@ -1,18 +1,22 @@
 <div class="admin-block">
   <div class="Admin-block-parent">
     <div class="Admin-block-title">
-      <p>Company 777 - Orders Made By Users:</p>
+      <p>
+        <fa-icon [icon]="archiveIcon"></fa-icon> Database Orders
+      </p>
     </div>
     <div class="Admin-block-child" *ngFor="let o of defaultOrders">
-      <p class="order-id"> ID: {{o.id}}</p>
-      <p class="order-createdOn">Created on: {{o.created}}</p>
-      <p class="order-createdBy">Created by: {{o.createdBy}}</p>
-      <p class="order-payment">Payment Method: {{o.paymentMethod}}</p>
-      <p class="order-price">Total Price: {{o.totalPrice}} Kr</p>
-      <p class="order-status">Status: {{o.status}}</p>
+      <p class="order-id"><fa-icon [icon]="addressIcon"></fa-icon> ID: {{o.id}}</p>
+      <p class="order-createdOn"><fa-icon [icon]="calanderIcon"></fa-icon> Created on: {{o.created}}</p>
+      <p class="order-createdBy"><fa-icon [icon]="mailIcon"></fa-icon> Created by: {{o.createdBy}}
+      </p>
+      <p class="order-payment"><fa-icon [icon]="moneyIcon"></fa-icon> Payment Method: {{o.paymentMethod}}</p>
+      <p class="order-price"><fa-icon [icon]="dollarIcon"></fa-icon> Total Price: {{o.totalPrice}} Kr
+      </p>
+      <p class="order-status"><fa-icon [icon]="statusIcon"></fa-icon> Status: {{o.status}}</p>
 
-      <button type="button" class="btn btn-danger admin-deleteOrder" (click)="deleteOrder(o.id)">DELETE
-        ORDER {{o.id}}!</button>
+      <button type="button" class="btn btn-danger admin-deleteOrder" (click)="deleteOrder(o.id)"><fa-icon [icon]="deleteIcon"></fa-icon> DELETE
+        ORDER!</button>
       <p class="admin-warning"> Once the order is removed, it can't be restored.</p>
     </div>
   </div>

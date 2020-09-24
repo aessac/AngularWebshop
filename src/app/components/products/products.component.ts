@@ -1,14 +1,11 @@
+import { CartService } from './../../services/cart/cart.service';
 import { IProductCategory } from './../../interfaces/IProductCategory';
 import { CategoryService } from './../../services/categories/category.service';
 import { ICategory } from './../../interfaces/ICategory';
 import { ProductService } from './../../services/products/product.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IMovie } from '../../interfaces/IMovie';
-
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
-import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faDollarSign, faPlayCircle, faComment, faTags, faFilm, faUndo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-products',
@@ -22,6 +19,9 @@ export class ProductsComponent implements OnInit {
   moneyIcon = faDollarSign;
   movieIcon = faPlayCircle;
   descIcon = faComment;
+  catIcon = faTags;
+  clearIcon = faUndo;
+  showAllIcon= faFilm;
 
   //Search clear
   @ViewChild('userSearchInput', { static: false })
@@ -31,7 +31,7 @@ export class ProductsComponent implements OnInit {
   categoryList: ICategory[] = [];
   categoryById: ICategory[] = [];
 
-  constructor(private productService: ProductService, private CategoryService: CategoryService) { }
+  constructor(private productService: ProductService, private CategoryService: CategoryService, private CartService: CartService) { }
 
   ngOnInit(): void {
     let category: ICategory[] = [];
@@ -39,7 +39,6 @@ export class ProductsComponent implements OnInit {
     //Call getMovieData function from productService
     this.productService.getMovieData().subscribe((movie: IMovie[]) => {
       this.movieList = movie;
-      console.log(movie);
     });
 
     //Call getCategoryData function from productService
@@ -104,7 +103,12 @@ export class ProductsComponent implements OnInit {
     this.productService.getMovieData().subscribe((movie: IMovie[]) => {
       this.movieList = movie;
     });
-    
+
     this.InputClear.nativeElement.value = '';
+  }
+
+  //Send item to cartService
+  sendItemToCart(addedItem: IMovie) {
+    this.CartService.sendToCart(addedItem);
   }
 }
