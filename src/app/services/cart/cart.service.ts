@@ -18,9 +18,9 @@ export class CartService {
     this.defaultCart.next(this.cartList);
   }
 
-  removeFromCard(updatedList: IMovie[]) {
+  removeFromCard(cartList: IMovie[]) {
     this.cartList = [];
-    this.cartList = updatedList;
+    this.cartList = cartList;
     this.defaultCart.next(this.cartList);
   }
 

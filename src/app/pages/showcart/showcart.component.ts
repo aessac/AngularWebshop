@@ -1,6 +1,6 @@
 import { IMovie } from './../../interfaces/IMovie';
 import { CartService } from '../../services/cart/cart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 
 import { faCreditCard, faDollarSign, faExclamationCircle, faShoppingCart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,11 +18,15 @@ export class ShowcartComponent implements OnInit {
   cartIcon = faShoppingCart;
   removeIcon = faTrash;
 
-  defaultShowCart: IMovie[] = [];
-  updatedList: IMovie[] = [];
-  totalPrice: number = 0;
 
-   constructor(private CartService: CartService) { }
+  defaultShowCart: IMovie[] = [];
+  totalPrice: number = 0;
+  numOfIndex: number;
+  found: IMovie;
+  newCartList: IMovie[] = [];
+  cartList: IMovie[] = [];
+
+  constructor(private CartService: CartService) { }
 
   ngOnInit(): void {
     //Get and present cart items
@@ -37,15 +41,22 @@ export class ShowcartComponent implements OnInit {
   //Remove items from cart
   removeItem(cartItemId) {
     this.CartService.defaultCart$.subscribe((items: IMovie[]) => {
-      this.updatedList = items.filter((item: IMovie) => {
-        return item.id != cartItemId;
-      });
-
-      this.totalPrice = 0;
-      this.updatedList.forEach(n => {
-        this.totalPrice = this.totalPrice + n.price
-      })
+      this.cartList = items;
     });
-    this.CartService.removeFromCard(this.updatedList);
+
+    this.found = this.cartList.find((item: IMovie) => {
+      return item.id === cartItemId;
+    });
+
+    this.numOfIndex = this.cartList.indexOf(this.found);
+    this.cartList.splice(this.numOfIndex, 1);
+    this.newCartList = this.cartList;
+
+    this.CartService.removeFromCard(this.newCartList);
+
+    this.totalPrice = 0;
+    this.newCartList.forEach(p => {
+      this.totalPrice = this.totalPrice + p.price;
+    })
   }
 }
