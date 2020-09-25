@@ -10,7 +10,7 @@
   padding: 0;
   overflow: hidden;
   border-bottom: 7px solid rgb(255, 1, 91);
-  background-color: rgb(55, 0, 60);
+  background-color: rgb(44, 0, 48);
   padding: 10px;
 }
 
@@ -24,12 +24,14 @@ li {
   float: right;
   background-color: rgb(235, 255, 0);
   margin: 2px;
+   border-radius: 25px;
 }
 
 .cartLink {
   float: right;
   background-color: rgb(5, 241, 255);
   margin: 2px;
+   border-radius: 25px;
 }
 
 li a {

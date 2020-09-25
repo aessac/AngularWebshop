@@ -20,18 +20,25 @@
 
 
   <div class="category-child" *ngFor="let category of categoryList">
-    <button type="button" class="btn btn-info category-btn"
-      (click)="categoryFilter(category.id)"><fa-icon [icon]="catIcon"></fa-icon> {{category.name}}</button>
+    <button type="button" class="btn btn-info category-btn" (click)="categoryFilter(category.id)">
+      <fa-icon [icon]="catIcon"></fa-icon> {{category.name}}
+    </button>
   </div>
 </div>
 
 <!-- Product presentation -->
 <div class='parent'>
   <div *ngFor="let movie of movieList" class="child">
-    <p class="movieTitle"><fa-icon [icon]="movieIcon"></fa-icon> {{movie.name}}</p>
-    <p class="moviePrice"><fa-icon [icon]="moneyIcon"></fa-icon> Price: {{movie.price}} Kr</p>
+    <p class="movieTitle">
+      <fa-icon [icon]="movieIcon"></fa-icon> {{movie.name}}
+    </p>
+    <p class="moviePrice">
+      <fa-icon [icon]="moneyIcon"></fa-icon> Price: {{movie.price}} Kr
+    </p>
     <img [src]="movie.imageUrl" alt="poster" class="movieImage" />
-    <p class="movieDescription"><fa-icon [icon]="descIcon"></fa-icon> Movie Discription:</p>
+    <p class="movieDescription">
+      <fa-icon [icon]="descIcon"></fa-icon> Movie Discription:
+    </p>
     <p class="movieDesc">{{movie.description}}</p>
 
     <button type="button" class='btn btn-warning addToCart-btn' (click)="sendItemToCart(movie)">

@@ -5,7 +5,7 @@ import { ICategory } from './../../interfaces/ICategory';
 import { ProductService } from './../../services/products/product.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IMovie } from '../../interfaces/IMovie';
-import { faShoppingCart, faDollarSign, faPlayCircle, faComment, faTags, faFilm, faUndo } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faDollarSign, faPlayCircle, faComment, faTags, faFilm, faHistory } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-products',
@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
   movieIcon = faPlayCircle;
   descIcon = faComment;
   catIcon = faTags;
-  clearIcon = faUndo;
+  clearIcon = faHistory;
   showAllIcon= faFilm;
 
   //Search clear

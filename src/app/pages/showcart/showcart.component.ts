@@ -57,6 +57,6 @@ export class ShowcartComponent implements OnInit {
     this.totalPrice = 0;
     this.newCartList.forEach(p => {
       this.totalPrice = this.totalPrice + p.price;
-    })
+    });
   }
 }

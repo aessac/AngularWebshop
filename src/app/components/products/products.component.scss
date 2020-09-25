@@ -12,9 +12,8 @@
   box-sizing: border-box;
   flex-direction: column;
   align-items: center;
-  border: 3px solid #000000;
+  border: 3px solid #55ccbe;
   background-color: aliceblue;
-  // box-shadow: 0 1px 8px rgb(0, 0, 0);
 }
 
 .movieTitle {
@@ -102,15 +101,13 @@
   width: 150px;
   margin: 20px 0px;
   padding: 12px 14px;
-  text-decoration: none;
-  font-weight: 700;
-  text-transform: uppercase;
+  border-style: solid;
+  font-weight: bold;
 }
 
 input.searchBar {
   background-color: aliceblue;
 }
-
 
 .category-parent {
   display: flex;
