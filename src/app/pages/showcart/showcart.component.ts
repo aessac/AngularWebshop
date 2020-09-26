@@ -1,6 +1,6 @@
 import { IMovie } from './../../interfaces/IMovie';
 import { CartService } from '../../services/cart/cart.service';
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { faCreditCard, faDollarSign, faExclamationCircle, faShoppingCart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
