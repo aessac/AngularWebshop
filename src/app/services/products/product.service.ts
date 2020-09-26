@@ -31,4 +31,12 @@ export class ProductService {
   getSearchData(searchString): Observable<IMovie[]> {
     return this.httpClient.get<IMovie[]>('http://medieinstitutet-wie-products.azurewebsites.net/api/search/?searchText=' + searchString);
   }
+
+
+  addProduct(product): Observable<any> {
+    return this.httpClient.post<any>('http://medieinstitutet-wie-products.azurewebsites.net/api/orders', product)
+      .pipe(
+        catchError(this.handleError('addHero', product))
+      );
+  }
 }

@@ -25,4 +25,44 @@
       <fa-icon [icon]="statusIcon"></fa-icon> Fill out the fields below to complete your order:
     </p>
   </div>
+
+
+  <form class="form-check" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-parent">
+      <div class="from-child">
+        <label class="form-label-email">
+          <fa-icon [icon]="emailIcon"></fa-icon> Email:
+        </label>
+        <input class="form-input-email" type="text" formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required!</div>
+          <div *ngIf="f.email.errors.email">Your Email must be a valid email address.</div>
+        </div>
+
+        <div>
+          <label class="form-label-email">
+            <fa-icon [icon]="paymentIcon"></fa-icon> Payment Method:
+          </label>
+          <mat-form-field appearance="fill" class="form-select">
+            <mat-label>Select an option</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option value="PayPal">Paypal</mat-option>
+              <mat-option value="VisaCard">VisaCard</mat-option>
+              <mat-option value="MasterCard">MasterCard</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <div>
+    <button type="submit" class="btn btn-success checkout-btn">
+      <fa-icon [icon]="cartIcon"></fa-icon> Check-Out
+    </button>
+  </div>
+
 </div>

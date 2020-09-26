@@ -1,8 +1,11 @@
+import { ProductService } from './../../services/products/product.service';
+import { IOrder } from './../../interfaces/IOrder';
+import { IRow } from './../../interfaces/IRow';
 import { IMovie } from './../../interfaces/IMovie';
 import { CartService } from '../../services/cart/cart.service';
 import { Component, OnInit } from '@angular/core';
-
-import { faCreditCard, faDollarSign, faExclamationCircle, faShoppingCart, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faCreditCard, faDollarSign, faExclamationCircle, faShoppingCart, faTrash, faAddressCard, faMoneyCheck} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-showcart',
@@ -17,7 +20,13 @@ export class ShowcartComponent implements OnInit {
   statusIcon = faExclamationCircle;
   cartIcon = faShoppingCart;
   removeIcon = faTrash;
+  emailIcon = faAddressCard;
+  paymentIcon = faMoneyCheck;
 
+  //check-out Validation
+  registerForm: FormGroup;
+  submitted = false;
+  selected: string = 'PayPal';
 
   defaultShowCart: IMovie[] = [];
   totalPrice: number = 0;
@@ -25,8 +34,11 @@ export class ShowcartComponent implements OnInit {
   found: IMovie;
   newCartList: IMovie[] = [];
   cartList: IMovie[] = [];
+  currentCart: any;
+  FilteredCurrShopCart: IRow[] = [];
+  shopCartObj: IRow[] = [];
 
-  constructor(private CartService: CartService) { }
+  constructor(private CartService: CartService, private formBuilder: FormBuilder, private ProductService: ProductService) { }
 
   ngOnInit(): void {
     //Get and present cart items
@@ -34,7 +46,12 @@ export class ShowcartComponent implements OnInit {
       this.defaultShowCart = cartItems;
       cartItems.forEach((price) => {
         this.totalPrice = this.totalPrice + price.price;
-      })
+      });
+    });
+
+    //Form Email
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]]
     });
   }
 
@@ -58,5 +75,68 @@ export class ShowcartComponent implements OnInit {
     this.newCartList.forEach(p => {
       this.totalPrice = this.totalPrice + p.price;
     });
+  }
+
+  //Form Validation
+  // convenience getter for easy access to form fields
+  get f() { return this.registerForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    //Call the cart
+    this.CartService.defaultCart$.subscribe((cartItm: IMovie[]) => {
+      this.currentCart = cartItm;
+    });
+
+    //Push new properties
+    this.currentCart.forEach((obj: IMovie) => {
+      this.shopCartObj.push({ 'ProductId': obj.id, 'Amount': 1 });
+    });
+
+    //Validation
+    this.shopCartObj.forEach((element: IRow) => {
+      const checkAvailable = this.FilteredCurrShopCart.find((el: IRow) => {
+        return el.ProductId === element.ProductId;
+      });
+
+      if (!!checkAvailable && element.ProductId === checkAvailable.ProductId) {
+        const newAmount = checkAvailable.Amount + 1;
+
+        const selectedProductItemIndex = this.FilteredCurrShopCart.findIndex((el: IRow) => {
+          return el.ProductId === element.ProductId;
+        });
+        this.FilteredCurrShopCart[selectedProductItemIndex] = { ...element, Amount: newAmount };
+      } else {
+        this.FilteredCurrShopCart.push(element);
+      }
+    });
+
+    //Get Total price
+    this.totalPrice = 0;
+    this.newCartList.forEach(p => {
+      this.totalPrice = this.totalPrice + p.price;
+    });
+
+    //Post Object
+    const postObject: IOrder = {
+      companyId: 777,
+      created: '0001-01-01T00:00:00',
+      createdBy: JSON.stringify(this.registerForm.value),
+      paymentMethod: this.selected,
+      totalPrice: this.totalPrice,
+      status: 2,
+      orderRows: this.FilteredCurrShopCart
+    }
+
+    //Call psot function
+    this.ProductService.addProduct(postObject).subscribe(hero => console.log(hero));
+
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value) + this.selected)
   }
 }

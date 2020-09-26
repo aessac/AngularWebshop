@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   descIcon = faComment;
   catIcon = faTags;
   clearIcon = faHistory;
-  showAllIcon= faFilm;
+  showAllIcon = faFilm;
 
   //Search clear
   @ViewChild('userSearchInput', { static: false })
