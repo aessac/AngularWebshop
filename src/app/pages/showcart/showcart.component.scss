@@ -1,10 +1,10 @@
 .ShowCartBlock {
-  background-color: #2d0031;
+  background-color: rebeccapurple;
   min-height: 100vh;
 }
 
 .ShowCartBlock-child {
-  background-color: teal;
+  background-color: rebeccapurple;
   padding-top: 12px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(235, 235, 235);
@@ -22,21 +22,19 @@
 }
 
 .cartremove-btn {
-  width: 100px;
+  width: 160px;
   margin: 5px;
   padding: 3px;
-  border-radius: 25px;
   outline: none;
   font-weight: bold;
-  border: solid 5px crimson;
   margin-left: auto;
   margin-right: 50px;
 }
 
 .ShowCartBlock-total {
-  background-color: rgb(20, 20, 20);
-  border-top: 5px solid rgb(219, 219, 219);
-  border-bottom: 5px solid rgb(219, 219, 219);
+  background-color: rgba(20, 20, 20, 0.651);
+  border-top: 5px solid #ff015b;
+  border-bottom: 5px solid #ff015b;
   margin-bottom: 20px;
 }
 
@@ -110,7 +108,7 @@
 }
 
 .checkout-btn {
-  width: 250px;
+  width: 350px;
   margin-top: 30px;
   margin-left: 20px;
   padding: 11px;
