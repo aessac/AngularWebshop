@@ -5,7 +5,7 @@ import { IMovie } from './../../interfaces/IMovie';
 import { CartService } from '../../services/cart/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faCreditCard, faDollarSign, faExclamationCircle, faShoppingCart, faTrash, faAddressCard, faMoneyCheck} from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard, faDollarSign, faExclamationCircle, faShoppingCart, faTrash, faAddressCard, faMoneyCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-showcart',
@@ -135,8 +135,6 @@ export class ShowcartComponent implements OnInit {
     }
 
     //Call psot function
-    this.ProductService.addProduct(postObject).subscribe(hero => console.log(hero));
-
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value) + this.selected)
+    this.ProductService.addProduct(postObject).subscribe(product => console.log(product));
   }
 }

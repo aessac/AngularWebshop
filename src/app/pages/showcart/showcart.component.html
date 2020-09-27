@@ -28,7 +28,6 @@
 
 
   <form class="form-check" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
     <div class="form-parent">
       <div class="from-child">
         <label class="form-label-email">
@@ -56,13 +55,10 @@
         </div>
       </div>
     </div>
-
+    <div class="form-group ">
+      <button class="btn btn-success checkout-btn">
+        <fa-icon [icon]="cartIcon"></fa-icon> Check-Out
+      </button>
+    </div>
   </form>
-
-  <div>
-    <button type="submit" class="btn btn-success checkout-btn">
-      <fa-icon [icon]="cartIcon"></fa-icon> Check-Out
-    </button>
-  </div>
-
 </div>
