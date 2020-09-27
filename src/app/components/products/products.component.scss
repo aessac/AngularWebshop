@@ -82,22 +82,22 @@
 }
 
 .searchBar {
-  width: 65%;
+  width: 70%;
   margin: 20px;
-  padding: 11px;
+  padding: 12px 14px;
   align-items: stretch;
-  border: 0px solid;
   background-color: rgb(59, 36, 69);
   color: rgb(59, 36, 69);
   outline: none;
   font-weight: bold;
+  border-radius: 25px;
+  border: 2px solid #ff015b;
 }
 
 .searchBar-clear {
   width: 150px;
   margin: 20px 0px;
   padding: 12px 14px;
-  border-style: solid;
   font-weight: bold;
 }
 
@@ -133,17 +133,3 @@ input.searchBar {
   outline: none;
   font-weight: bold;
 }
-
-// .btn-info {
-// background-color: rgb(5, 241, 255);
-// color: rgb(46, 4, 56);
-// }
-
-// .btn-info:hover,
-// .btn-info:focus,
-// .btn-info:active,
-// .btn-info.active,
-// .btn-info:active:focus,
-// .open>.dropdown-toggle.btn-info {
-//   background-color: rgba(0, 0, 0, 0.062);
-// }

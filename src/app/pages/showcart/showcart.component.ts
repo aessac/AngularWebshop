@@ -83,6 +83,8 @@ export class ShowcartComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    let user = { ...this.registerForm.value }
+    let userEmail = JSON.stringify(user.email);
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
@@ -119,7 +121,7 @@ export class ShowcartComponent implements OnInit {
 
     //Get Total price
     this.totalPrice = 0;
-    this.newCartList.forEach(p => {
+    this.currentCart.forEach(p => {
       this.totalPrice = this.totalPrice + p.price;
     });
 
@@ -127,14 +129,18 @@ export class ShowcartComponent implements OnInit {
     const postObject: IOrder = {
       companyId: 777,
       created: '0001-01-01T00:00:00',
-      createdBy: JSON.stringify(this.registerForm.value),
+      createdBy: userEmail,
       paymentMethod: this.selected,
       totalPrice: this.totalPrice,
       status: 2,
       orderRows: this.FilteredCurrShopCart
     }
 
-    //Call psot function
-    this.ProductService.addProduct(postObject).subscribe(product => console.log(product));
+    //Call post function
+    this.ProductService.addProduct(postObject).subscribe(order => {
+      console.log(order);
+      alert('Congratulations!' + '\n' + 'Your order has been placed.');
+      window.location.reload();
+    });
   }
 }

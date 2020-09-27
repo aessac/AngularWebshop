@@ -36,7 +36,7 @@ export class ProductService {
   addProduct(product): Observable<any> {
     return this.httpClient.post<any>('http://medieinstitutet-wie-products.azurewebsites.net/api/orders', product)
       .pipe(
-        catchError(this.handleError('addHero', product))
+        catchError(this.handleError('addProduct', product))
       );
   }
 }

@@ -36,8 +36,12 @@
         <input class="form-input-email" type="text" formControlName="email"
           [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">* Email is required!</div>
-          <div *ngIf="f.email.errors.email">* Your Email must be a valid email address.</div>
+          <div *ngIf="f.email.errors.required">
+            <fa-icon [icon]="statusIcon"></fa-icon> Email is required!
+          </div>
+          <div *ngIf="f.email.errors.email">
+            <fa-icon [icon]="statusIcon"></fa-icon> Your Email must be a valid email address.
+          </div>
         </div>
 
         <div>
@@ -52,11 +56,14 @@
               <mat-option value="MasterCard">MasterCard</mat-option>
             </mat-select>
           </mat-form-field>
+          <p class="p-info"> Choose your payment method. Paypal is the
+            default.
+          </p>
         </div>
       </div>
     </div>
     <div class="form-group ">
-      <button class="btn btn-success checkout-btn">
+      <button class="btn btn-success checkout-btn" ng-click="reloadRoute()">
         <fa-icon [icon]="cartIcon"></fa-icon> Check-Out
       </button>
     </div>
