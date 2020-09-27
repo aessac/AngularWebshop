@@ -84,7 +84,7 @@ export class ShowcartComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     let user = { ...this.registerForm.value }
-    let userEmail = JSON.stringify(user.email);
+    let userEmail = user.email;
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
