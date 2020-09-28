@@ -11,5 +11,5 @@ The webshop gets the products dynamically from an API then present the products.
 * Categories (Sort items by genre).
 * Check-out (Orders and customers details saved).
 
-<img src="src/assets/screenshot.png" width="1000">
+<img src="src/assets/Screenshot.png" width="1000">
 
