@@ -32,7 +32,7 @@ export class ProductService {
     return this.httpClient.get<IMovie[]>('http://medieinstitutet-wie-products.azurewebsites.net/api/search/?searchText=' + searchString);
   }
 
-
+  //Post products to API
   addProduct(product): Observable<any> {
     return this.httpClient.post<any>('http://medieinstitutet-wie-products.azurewebsites.net/api/orders', product)
       .pipe(
