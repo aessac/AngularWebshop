@@ -4,10 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+export interface ICategoryService {
+  getCategoryData(): Observable<ICategory[]>;
+}
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class CategoryService implements ICategoryService {
 
   constructor(private httpClient: HttpClient) { }
 

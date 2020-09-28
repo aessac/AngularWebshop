@@ -2,11 +2,15 @@ import { IMovie } from './../../interfaces/IMovie';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+export interface ICartService {
+  sendToCart(cartItem: IMovie): void;
+  removeFromCard(cartList: IMovie[]): void;
+}
 @Injectable({
   providedIn: 'root'
 })
 
-export class CartService {
+export class CartService implements ICartService {
   private cartList: IMovie[] = [];
   private defaultCart = new BehaviorSubject<IMovie[]>(this.cartList);
   defaultCart$ = this.defaultCart.asObservable();

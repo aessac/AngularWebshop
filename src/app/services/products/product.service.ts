@@ -3,11 +3,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { IOrder } from 'src/app/interfaces/IOrder';
+
+export interface IMovieService {
+  getMovieData(): Observable<IMovie[]>;
+  getSearchData(searchString: string): Observable<IMovie[]>;
+  addProduct(product: IOrder): Observable<IOrder[]>;
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductService implements IMovieService {
   searchResult: IMovie[] = [];
 
   constructor(private httpClient: HttpClient) { }
@@ -28,12 +35,12 @@ export class ProductService {
   }
 
   //Get search function
-  getSearchData(searchString): Observable<IMovie[]> {
+  getSearchData(searchString: string): Observable<IMovie[]> {
     return this.httpClient.get<IMovie[]>('http://medieinstitutet-wie-products.azurewebsites.net/api/search/?searchText=' + searchString);
   }
 
   //Post products to API
-  addProduct(product): Observable<any> {
+  addProduct(product: IOrder): Observable<IOrder[]> {
     return this.httpClient.post<any>('http://medieinstitutet-wie-products.azurewebsites.net/api/orders', product)
       .pipe(
         catchError(this.handleError('addProduct', product))

@@ -4,10 +4,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+export interface IOrderService {
+  getOrdersData(): Observable<IOrderAdmin[]>;
+  deleteOrderData(orderId: number): Observable<IOrderAdmin[]>;
+}
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService {
+export class OrderService implements IOrderService {
 
   constructor(private httpClient: HttpClient) { }
 
