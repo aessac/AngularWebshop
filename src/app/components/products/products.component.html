@@ -29,9 +29,9 @@
 <!-- Product presentation -->
 <div class='parent'>
   <div *ngFor="let movie of movieList" class="child">
-    <p class="movieTitle">
+    <a class="movieTitle" [routerLink]="['/product', movie.id]">
       <fa-icon [icon]="movieIcon"></fa-icon> {{movie.name}}
-    </p>
+    </a>
     <p class="moviePrice">
       <fa-icon [icon]="moneyIcon"></fa-icon> Price: {{movie.price}} Kr
     </p>

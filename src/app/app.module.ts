@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
     NotfoundComponent,
     ShowcartComponent,
     ProductsComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

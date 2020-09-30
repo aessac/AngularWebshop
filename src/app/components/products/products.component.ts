@@ -31,13 +31,13 @@ export class ProductsComponent implements OnInit {
   categoryList: ICategory[] = [];
   categoryById: ICategory[] = [];
 
-  constructor(private productService: ProductService, private CategoryService: CategoryService, private CartService: CartService) { }
+  constructor(private ProductService: ProductService, private CategoryService: CategoryService, private CartService: CartService) { }
 
   ngOnInit(): void {
     let category: ICategory[] = [];
 
     //Call getMovieData function from productService
-    this.productService.getMovieData().subscribe((movie: IMovie[]) => {
+    this.ProductService.getMovieData().subscribe((movie: IMovie[]) => {
       this.movieList = movie;
     });
 
@@ -62,7 +62,7 @@ export class ProductsComponent implements OnInit {
       this.categoryById.forEach((i: ICategory) => {
         catId = i.id;
       });
-      this.productService.getMovieData().subscribe((movie: IMovie[]) => {
+      this.ProductService.getMovieData().subscribe((movie: IMovie[]) => {
         movie.forEach((mov: IMovie) => {
           mov.productCategory.forEach((movCat: IProductCategory) => {
             if (movCat.categoryId === catId) {
@@ -77,7 +77,7 @@ export class ProductsComponent implements OnInit {
 
   //Reset category filter
   categoryFilterReset() {
-    this.productService.getMovieData().subscribe((movie: IMovie[]) => {
+    this.ProductService.getMovieData().subscribe((movie: IMovie[]) => {
       this.movieList = movie;
     });
   }
@@ -86,13 +86,13 @@ export class ProductsComponent implements OnInit {
   searchProduct(searchInput: string) {
     //Validation
     if (searchInput != '') {
-      this.productService.getSearchData(searchInput).subscribe((result: IMovie[]) => {
+      this.ProductService.getSearchData(searchInput).subscribe((result: IMovie[]) => {
         if (result.length != undefined) {
           this.movieList = result;
         }
       });
     } else {
-      this.productService.getMovieData().subscribe((movie: IMovie[]) => {
+      this.ProductService.getMovieData().subscribe((movie: IMovie[]) => {
         this.movieList = movie;
       });
     }
@@ -100,7 +100,7 @@ export class ProductsComponent implements OnInit {
 
   //Clear function
   clearSearch() {
-    this.productService.getMovieData().subscribe((movie: IMovie[]) => {
+    this.ProductService.getMovieData().subscribe((movie: IMovie[]) => {
       this.movieList = movie;
     });
 

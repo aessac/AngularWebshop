@@ -9,6 +9,7 @@ export interface IMovieService {
   getMovieData(): Observable<IMovie[]>;
   getSearchData(searchString: string): Observable<IMovie[]>;
   addProduct(product: IOrder): Observable<IOrder[]>;
+  productDetail(MovieId: number): Observable<IMovie>;
 }
 
 @Injectable({
@@ -45,5 +46,9 @@ export class ProductService implements IMovieService {
       .pipe(
         catchError(this.handleError('addProduct', product))
       );
+  }
+
+  productDetail(MovieId: number): Observable<IMovie> {
+    return this.httpClient.get<IMovie>('https://medieinstitutet-wie-products.azurewebsites.net/api/products/' + MovieId);
   }
 }
