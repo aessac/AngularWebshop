@@ -4,7 +4,6 @@
   </p>
 </div>
 
-
 <div class="category-parent">
   <div class="category-child" *ngFor="let category of catTitle">
     <p class="category-title">
@@ -13,23 +12,33 @@
   </div>
 </div>
 
+<ng-container *ngIf="doesProductIdExists; then productExists; else productDoesntExists">
+</ng-container>
 
-<div class='parent'>
-  <div *ngFor="let movie of DefaultDetailList" class="child">
-    <a class="movieTitle" [routerLink]="['']">
-      <fa-icon [icon]="movieIcon"></fa-icon> {{movie.name}}
-    </a>
-    <p class="moviePrice">
-      <fa-icon [icon]="moneyIcon"></fa-icon> Price: {{movie.price}} Kr
-    </p>
-    <img [src]="movie.imageUrl" alt="poster" class="movieImage" />
-    <p class="movieDescription">
-      <fa-icon [icon]="descIcon"></fa-icon> Movie Discription:
-    </p>
-    <p class="movieDesc">{{movie.description}}</p>
+<ng-template #productExists>
+  <div class='parent'>
+    <div *ngFor="let movie of DefaultDetailList" class="child">
+      <a class="movieTitle" [routerLink]="['']">
+        <fa-icon [icon]="movieIcon"></fa-icon> {{movie.name}}
+      </a>
+      <p class="moviePrice">
+        <fa-icon [icon]="moneyIcon"></fa-icon> Price: {{movie.price}} Kr
+      </p>
+      <img [src]="movie.imageUrl" alt="poster" class="movieImage" />
+      <p class="movieDescription">
+        <fa-icon [icon]="descIcon"></fa-icon> Movie Discription:
+      </p>
+      <p class="movieDesc">{{movie.description}}</p>
 
-    <button type="button" class='btn btn-warning addToCart-btn' (click)="sendItemToCart(movie)">
-      <fa-icon [icon]="cartIcon"></fa-icon> Add To Cart
-    </button>
+      <button type="button" class='btn btn-warning addToCart-btn' (click)="sendItemToCart(movie)">
+        <fa-icon [icon]="cartIcon"></fa-icon> Add To Cart
+      </button>
+    </div>
   </div>
-</div>
+</ng-template>
+
+<ng-template #productDoesntExists>
+  <div class="Error-block-title">
+    <p>A product with that ID: {{id}} doesn't exist in our Database.</p>
+  </div>
+</ng-template>

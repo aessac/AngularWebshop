@@ -27,7 +27,8 @@ export class ProductDetailsComponent implements OnInit {
   movieIcon = faPlayCircle;
   descIcon = faComment;
   catIcon = faTags;
-
+  doesProductIdExists: boolean = false;
+  
   constructor(private route: ActivatedRoute, private ProductService: ProductService, private CartService: CartService, private CategoryService: CategoryService) { }
 
   ngOnInit(): void {
@@ -38,6 +39,10 @@ export class ProductDetailsComponent implements OnInit {
     //Call getCategoryById function
     this.ProductService.productDetail(this.id).subscribe((movie: IMovie) => {
       this.DefaultDetailList.push(movie);
+
+      if (this.DefaultDetailList.length > 0) {
+        this.doesProductIdExists = true;
+      }
 
       movie.productCategory.forEach((category: IProductCategory) => {
         this.CategoryService.getCategoryById(category.categoryId).subscribe((cat: ICategory) => {

@@ -108,3 +108,15 @@
   font-weight: bold;
   color: rgb(235, 255, 0);
 }
+
+.Error-block-title {
+  display: flex;
+  width: 100%;
+  margin: 20px 5px;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(255, 0, 106);
+}
