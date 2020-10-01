@@ -27,15 +27,7 @@ export class ProductService implements IMovieService {
     );
   }
 
-  //Handle get error
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }
-
-  //Get search function
+    //Get search function
   getSearchData(searchString: string): Observable<IMovie[]> {
     return this.httpClient.get<IMovie[]>('http://medieinstitutet-wie-products.azurewebsites.net/api/search/?searchText=' + searchString);
   }
@@ -48,7 +40,16 @@ export class ProductService implements IMovieService {
       );
   }
 
+  //Get product by ID
   productDetail(MovieId: number): Observable<IMovie> {
     return this.httpClient.get<IMovie>('https://medieinstitutet-wie-products.azurewebsites.net/api/products/' + MovieId);
+  }
+
+  //Handle get error
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 }
