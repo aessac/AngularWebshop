@@ -125,10 +125,14 @@ export class ShowcartComponent implements OnInit {
       this.totalPrice = this.totalPrice + p.price;
     });
 
+    //Get date
+    const dateObj = new Date();
+    const dateObjString = dateObj.toISOString();
+
     //Post Object
     const postObject: IOrder = {
       companyId: 777,
-      created: '0001-01-01T00:00:00',
+      created: dateObjString,
       createdBy: userEmail,
       paymentMethod: this.selected,
       totalPrice: this.totalPrice,
