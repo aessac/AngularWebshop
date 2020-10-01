@@ -1,10 +1,10 @@
+import { IMovie } from './../../interfaces/IMovie';
 import { CartService } from './../../services/cart/cart.service';
 import { IProductCategory } from './../../interfaces/IProductCategory';
 import { CategoryService } from './../../services/categories/category.service';
 import { ICategory } from './../../interfaces/ICategory';
 import { ProductService } from './../../services/products/product.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { IMovie } from '../../interfaces/IMovie';
 import { faShoppingCart, faDollarSign, faPlayCircle, faComment, faTags, faFilm, faHistory } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -38,7 +38,10 @@ export class ProductsComponent implements OnInit {
 
     //Call getMovieData function from productService
     this.ProductService.getMovieData().subscribe((movie: IMovie[]) => {
-      this.movieList = movie;
+      const filteredMovie: IMovie[] = movie.filter((mov: IMovie) => {
+        return mov.name != '';
+      })
+      this.movieList = filteredMovie;
     });
 
     //Call getCategoryData function from productService

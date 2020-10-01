@@ -11,32 +11,31 @@
   overflow: hidden;
   border-bottom: 7px solid rgb(255, 1, 91);
   background-color: rgb(44, 0, 48);
-  padding: 10px;
+  padding: 22px;
 }
 
 li {
   float: left;
   background-color: rgb(1, 254, 135);
-  margin: 2px;
+  margin: 5px;
+  font-size: 18px;
 }
 
 .adminLink {
   float: right;
   background-color: rgb(235, 255, 0);
-  margin: 2px;
-   border-radius: 25px;
+  margin: 5px;
 }
 
 .cartLink {
   float: right;
   background-color: rgb(5, 241, 255);
-  margin: 2px;
-   border-radius: 25px;
+  margin: 5px;
 }
 
 li a {
   display: block;
-  color: rgb(46, 4, 56);
+  color: rgb(0, 0, 0);
   text-align: center;
   padding: 12px 14px;
   text-decoration: none;

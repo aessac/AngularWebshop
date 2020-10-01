@@ -12,7 +12,7 @@ describe('ProductsComponent', () => {
       imports: [HttpClientTestingModule],
       providers: [ProductsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
