@@ -12,7 +12,7 @@ import { faCogs } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
   title = 'webshop';
-  length: number = 0;
+  cLength: number = 0;
 
   //FontAwesome icons
   filmIcon = faFilm;
@@ -25,10 +25,9 @@ export class AppComponent {
   ngOnInit() {
     //Get number of ths items in the cart
     this.CartService.defaultCart$.subscribe((cartLength: IMovie[]) => {
-      this.length = cartLength.length
+      this.cLength = cartLength.length
     });
   }
-
 
 }
 

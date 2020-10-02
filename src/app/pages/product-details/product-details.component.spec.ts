@@ -13,7 +13,7 @@ describe('ProductDetailsComponent', () => {
       imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [ProductDetailsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -16,8 +16,7 @@ export interface IMovieService {
   providedIn: 'root'
 })
 export class ProductService implements IMovieService {
-  searchResult: IMovie[] = [];
-
+  
   constructor(private httpClient: HttpClient) { }
 
   //Get Movie list from API
@@ -27,7 +26,7 @@ export class ProductService implements IMovieService {
     );
   }
 
-    //Get search function
+  //Get search function
   getSearchData(searchString: string): Observable<IMovie[]> {
     return this.httpClient.get<IMovie[]>('http://medieinstitutet-wie-products.azurewebsites.net/api/search/?searchText=' + searchString);
   }

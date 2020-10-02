@@ -8,9 +8,9 @@ describe('NotfoundComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotfoundComponent ]
+      declarations: [NotfoundComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +21,9 @@ describe('NotfoundComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should track if variabel errorImage has value', () => {
+    expect(component.errorImage).not.toBeNull();
   });
 });

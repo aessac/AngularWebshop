@@ -13,7 +13,7 @@ describe('ShowcartComponent', () => {
       imports: [HttpClientTestingModule, ReactiveFormsModule],
       providers: [ShowcartComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,5 +24,19 @@ describe('ShowcartComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call the form onSubmit method 1 times', () => {
+    fixture.detectChanges();
+
+    let onSubmitSpy = spyOn(component, 'onSubmit').and.callThrough();
+    expect(onSubmitSpy).not.toHaveBeenCalled();
+
+    let button = fixture.nativeElement.querySelector('.checkout-btn');
+    expect(button).toBeTruthy();
+    expect(button.textContent.trim()).toBe('Check-Out');
+
+    button.click();
+    expect(onSubmitSpy).toHaveBeenCalledTimes(1);
   });
 });

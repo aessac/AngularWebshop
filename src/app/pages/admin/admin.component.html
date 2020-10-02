@@ -15,8 +15,7 @@
       </p>
       <p class="order-status"><fa-icon [icon]="statusIcon"></fa-icon> Status: {{o.status}}</p>
 
-      <button type="button" class="btn btn-danger admin-deleteOrder" (click)="deleteOrder(o.id)"><fa-icon [icon]="deleteIcon"></fa-icon> DELETE
-        ORDER!</button>
+      <button type="button" class="btn btn-danger admin-deleteOrder" (click)="deleteOrder(o.id)"><fa-icon [icon]="deleteIcon"></fa-icon> DELETE ORDER!</button>
       <p class="admin-warning"> Once the order is removed, it can't be restored.</p>
     </div>
   </div>
