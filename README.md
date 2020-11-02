@@ -1,4 +1,4 @@
-## Webshop Aplication With Angular: Interfaces & Services.
+## Webshop Aplication With Angular: Interfaces && Services.
 
 The webshop gets the products dynamically from an API then present the products.
 
