@@ -15,6 +15,6 @@ If yes, choose test type:
 - [ ] Automated test.
 - [ ] Manuell test.
 
-# Images:
+# Imagess:
 
 
